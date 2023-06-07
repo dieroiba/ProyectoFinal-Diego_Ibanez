@@ -1,0 +1,854 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+ 
+
+/* Inicio configuración del header */
+header {
+  background-color: rgb(240, 183, 183);
+  display: block;
+  justify-items: center;
+}
+/* Fin configuración del header */
+
+
+/* Inicio configuración del pie de pagina */
+#footer-contenedor {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  width: auto;
+  flex-wrap: wrap;
+  background-color: rgb(240, 183, 183);
+}
+/* Fin configuración del pie de pagina */
+
+
+/* Listados sin puntos negros */
+ul {
+  list-style-type: none;
+}
+
+
+/* Inicio Configuración de los enlaces */
+
+/* Links sin visitar */
+a:link {
+  color: rgb(3, 3, 3);
+}
+
+/* Links visitados */
+a:visited {
+  color: rgb(48, 49, 48);
+}
+
+/* Link mouse over */
+a:hover {
+  color: rgb(128, 115, 241);
+}
+
+/* Link seleccionado */
+a:active {
+  color: blue;
+}
+/* Fin configuración de los enlaces */
+
+
+/* Todos los elementos tendran 0px de margen y espacio interior*/
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+/* Separación de la barra de menú del contenido inferior*/
+nav {
+  margin-bottom: 30px;
+}
+
+
+/*Configuración del menú para que sea responsive*/
+nav li {
+  display: inline-flex;
+  list-style: none;
+  padding-top: 40px;
+}
+/*Fin configuración del menú para que sea responsive*/
+
+
+/*Configuración de la disposición de las 3 imagenes del index*/
+main section article {
+  display: inline-block;
+  padding: 5px 5px;
+  margin: 10px;
+}
+/*Fin de la disposición de las 3 imagenes del index*/
+
+
+/*Centrado del contenido del body*/
+.ancho-fijo {
+  margin: 0 15px 0 15px;
+  text-align: center;
+}
+
+
+/*Configuración de etiquetas*/
+h1 {
+  margin: 10px 0 10px 0;
+  text-align: center;
+}
+
+h2 {
+  margin: 10px 0 10px 0;
+  text-align: center;
+  font-size: 23px;
+}
+
+h3 {
+  margin: 30px 0 40px 0;
+}
+
+.esp-autor {
+  margin-bottom: 30px;
+}
+/*Fin configuración de etiquetas*/
+
+
+/*Inicio configuración de los botones del menú*/
+.nav-boton-menu {
+  background-color: rgb(240, 183, 183);
+  border: none;
+  border-radius: 10px 10px;
+  box-shadow: rgb(150, 150, 150) 5px 5px 5px;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.nav-boton-menu span {
+  cursor: pointer;
+  position: relative;
+  transition: 0.5s;
+}
+
+.nav-boton-menu span:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.nav-boton-menu:hover span {
+  padding-right: 25px;
+}
+
+.nav-boton-menu:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+/*Fin configuración de los botones del menú*/
+
+
+/*Configuración de las imágenes*/
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+
+/* Efecto Hover u opacidad sobre las imágenes del Index*/
+.fadein figure:hover img {
+  opacity: 0.5;
+}
+
+
+/* Seteo de los botones que están debajo de las fotografías en el Index*/
+.figure-image-boton {
+  background-color: rgb(240, 183, 183);
+  border: none;
+  border-radius: 25px 10px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+
+/* Inicio transformacion / transición de botones que están en el Index*/
+.sombra-grow {
+  box-shadow: rgb(150, 150, 150) 5px 5px 5px;
+  transform: translateZ(0);
+  transition-duration: 0.5s;
+  transition-property: transform;
+}
+
+.sombra-grow:hover,
+.sombra-grow:focus,
+.sombra-grow:active {
+  transform: scale(1.2);
+}
+/* Fin transformacion / transición de botones que están en el Index*/
+
+
+/* Inicio transformacion / transición de las imagenes que están en el Index*/
+.sombra-grow-img {
+  transform: translateZ(0);
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.sombra-grow-img:hover,
+.sombra-grow-img:focus,
+.sombra-grow-img:active {
+  transform: scale(1.1);
+}
+/* Fin transformacion/ transición de las imagenes que están en el Index*/
+
+
+/* Centrado de tabla en la pantalla de Reserva-Turno*/
+.wrapper-table > table {
+  display: inline-table;
+  width: 40%;
+  margin: 30px auto 30px auto;
+}
+
+/*Iframe de Youtube responsive*/
+.youtube-responsive {
+  overflow: hidden;
+  padding-bottom: 400px; /* Adecuar este valor para controlar la altura del video */
+  position: relative;
+  height: 0;
+}
+
+.youtube-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+/*Fin del iframe de Youtube responsive*/
+
+/* Texto justificado*/
+.texto-just {
+  display: block;
+  text-align: justify;
+  margin: auto;
+  max-width: 800px;
+}
+
+.whats-boton:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+/* Fin de Boton de Whatsapp animado*/
+
+
+/* Formato de las listas del footer */
+.footer-listado {
+  font-size: 14px;
+  text-align: left;
+  margin: 25px 5px;
+}
+
+/* Separación entre las fuentes Awesome del footer y el título de cada item de la lista*/
+i {
+  margin-right: 10px;
+}
+
+/* Formato para artículos */
+#articulo-formato {
+  text-align: center;
+}
+
+/* Cursiva para subtítulo de imágenes */
+figcaption {
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 1.5%;
+  margin-top: 3%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/*Ancho y margen para el boton de Whatsapp*/
+.whats-boton {
+  margin-top: 20px;
+  width: 230px;
+}
+
+/*Tamaño del logo principal para dispositivos móviles*/
+header div a img {
+  width: 250px;
+}
+
+/*Configuración del formato de los testimonios*/
+blockquote {
+  align-content: center;
+  margin: auto;
+  margin-bottom: 20px;
+  max-width: 40%;
+}
+
+/* Inicio de esquinas redondeadas y sombras de las img en el Index*/
+.img-index {
+  border-radius: 3%;
+  box-shadow: rgb(150, 150, 150) 5px 5px 5px;
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+  width: 220px;
+  margin-top: 20px;
+}
+/* Fin de esquinas redondeadas y sombras de las img en el Index*/
+
+
+/*Inicio de seteo de imágenes en artículos*/
+.img-default {
+  border-radius: 3%;
+  box-shadow: rgb(150, 150, 150) 5px 5px 5px;
+  width: 70%;
+  margin: 20px 0 20px 0;
+  margin: 20px auto 20px auto;
+}
+/*Fin de seteo de imágenes en artículos*/
+
+
+
+/* Inicio de seteo de la pagina Retratos para vista desktop / mobile con maquetación Grid */
+.grid-container-2 {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+}
+/* Fin de seteo de la pagina Retratos para vista desktop / mobile con maquetación Grid */
+
+/*Tamaño de las imagenes de la pagina de Retratos*/
+.img-retrato {
+  width: 90%;
+}
+
+
+/*Configuración del formulario de contacto*/
+.contact-form {
+  max-width: 450px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 20 px 0;
+}
+
+input, textarea, label {
+  display: block;
+  margin: 0 auto;
+  width:80%;
+  color: #828282;
+}
+
+textarea {
+  width: 300px;
+  height: 150px;
+}
+
+
+input, textarea {
+  border: 0;
+  border-bottom: 2px solid #828282;
+}
+
+input, textarea {
+  color: rgb(51, 50, 50);
+  font-size: 18px;
+  padding: 10px;
+}
+/* Fin configuración del formulario de contacto*/
+
+
+
+/*# sourceMappingURL=estilo.css.map */
+
+
+/*Nuevo módulo de testimonios*/
+
+.contenedor-testimonios {
+  background-color: rgb(240, 183, 183);
+  color: #fff;
+  border-radius: 15px;
+  margin: 20px auto;
+  padding: 40px 80px;
+  max-width: 500px;
+  position: relative;
+}
+
+.comillas {
+  color: #fff;
+  font-size: 28px;
+  position: absolute;
+  top: 45px;
+}
+
+.fa-quote-right {
+  left: 40px;
+}
+
+.fa-quote-left {
+  right: 40px;
+}
+
+.testimonio {
+  margin-top: 10px;
+  line-height: 25px;
+  text-align: justify;
+  font-size: 20px;
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usuario .usuario-imagen {
+  border-radius: 50%;
+  height: 85px;
+  width: 85px;
+  margin-top: 20px;
+}
+
+.detalles-usuario {
+  margin-left: 10px;
+}
+
+.usuario .nombreusuario {
+  margin: 0;
+}
+
+.usuario .profesion {
+  font-weight: normal;
+  margin: 10px 0;
+}
+
+.barra-progreso {
+  background-color: #fff;
+  height: 4px;
+  width: 100%;
+  animation: grow 10s linear infinite;
+  transform-origin: left;
+}
+
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+}
+
+.busqueda {
+  display:inline-flex;
+  height: 40px;
+  margin-top: 10px;
+}
+
+.busqueda .entrada {
+  background-color: #fdfcfc;
+  border: 0;
+  font-size: 16px;
+  padding: 10px;
+  height: 20px;
+  width: 0px;
+  transition: width 0.3s ease;
+}
+
+.btn {
+  background-color: #fdfcfc;
+  border: 0;
+  cursor: pointer;
+  font-size: 20px;
+  display:inline-flex;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 0px;
+  transition: transform 0.3s ease;
+}
+
+.btn:focus,
+.entrada:focus {
+  outline: none;
+}
+
+.busqueda.active .entrada {
+  width: 100px;
+}
+
+.busqueda.active .btn {
+  transform: translate(58px);
+}
+
+
+.cards {
+  display:flex;
+  max-width: 900px;
+  margin: auto;
+}
+
+.panel {
+  background-size: cover 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1180px;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: flex 0.8s ease-in;
+}
+
+.panel h3{
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.activo{
+flex: 5;
+height: 1180px;
+}
+
+.panel.activo h3{
+  opacity: 3;
+  transition: opacity 0.3s ease-in 0.8s;
+}
+
+@media (max-width: 480px){
+  .panel {
+    width: 100vw;
+  }  
+
+  .panel:nth-of-type(3),
+  .panel:nth-of-type(4){
+    display: none;
+  }
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+/*Inicio del módulo Contacto*/
+
+
+.contacto{
+  display:flex;
+  max-width: 350px;
+  margin: auto;
+}
+
+
+.contacto h2{
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #332902;
+}
+
+.contacto .ingreso{
+  margin-bottom: 10px;
+}
+
+.contacto .ingreso input[type="text"],
+.contacto textarea{
+  border: 1px solid #e0e0e0;
+  width: 350px;
+  padding: 10px;
+}
+
+.contacto textarea{
+  resize: none;
+  height: 80px;
+}
+
+.contacto .enviar_msje input[type="submit"]{
+  border: 0px;
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  background: rgb(240, 183, 183) ;
+  color: #332902;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#mensaje_error{
+  margin-bottom: 20px;
+  background: #fe8b8e;
+  padding: 0px;
+  text-align: center;
+  font-size: 14px;
+  transition: all 0.5s ease;
+}
+
+
+
+/*Inicio de tienda*/
+
+
+.galery {
+  display: flex;
+  max-width: 900px;
+  margin: auto;
+}
+
+.btnsto {
+  width: 20px;
+  height: 20px;
+  background-color: #e99093;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.25em;
+  color: #000;
+  padding-left: 5px;
+
+}
+
+.numero-copias {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #000;
+  margin-left: 15px;
+  margin-right: 8px;
+}
+.modulo-carrito {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+}
+
+.encabezado-carro {
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.carro-fila {
+  display:flex;
+}
+
+.fila-de-carro {
+  display: flex;
+}
+
+.carro-encabezado {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #000;
+}
+
+.carro-columna {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 35%;
+}
+
+.carro-precio {
+  width: 20%;
+  font-size: 1.2em;
+  color: #000;
+}
+
+.carro-cantidad {
+  width: 35%;
+}
+
+.carro-item-imagen {
+  width: 35%;
+  height: auto;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.carro-item-titulo {
+  color: #000;
+  font-size: 1.2em;
+  margin: auto;
+}
+
+.carro-cantidad-entrada {
+  height: 34px;
+  width: 40px;
+  border-radius: 5px;
+  border: 1px solid #56CCF2;
+  background-color: #eee;
+  color: #333;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-right: 25px;
+}
+
+
+.carro-total {
+  text-align: center;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.carro-total-titulo {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: black;
+  margin-right: 20px;
+}
+
+.carro-total-precio{
+  color: #333;
+  font-size: 1.6em;
+}
+
+/* .botns {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.67em 0.67em ;
+  cursor: pointer;
+} */
+
+.botns-quitar {
+  color: #fff;
+  background-color: #fc050d;
+  border: none;
+  border-radius: 0.3em;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.botnsprimario {
+  color:#fff;
+  background-color: #56CCF2;
+  border: none;
+  border-radius: 0.3em;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.67em 0.67em ;
+  cursor: pointer;
+}
+
+.botns-comprar {
+  display: block;
+  margin: 40px auto 80px auto;
+  font-size: 1.75em;
+}
+
+.pie-foto {
+  margin-bottom: 40px;
+  margin-top: 15px;
+}
+
+.item-titulo{
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.item-imagen{
+  height: auto;
+  
+}
+
+
+/*Estilo del formulario de inicio de sesión*/
+
+#formulario {
+  width: auto;
+  height: 70%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+}
+
+#nombre {
+  border: none;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  outline: none;
+  padding: 0px 0px 5px 5px;
+}
+
+#ingresar {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  outline: none;
+}

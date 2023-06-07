@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotografía / Tienda</title>
+    <link rel="stylesheet" href= "./css/estilo.css">
+    <script src="https://kit.fontawesome.com/19386e8a5d.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./css/mixin.css">
+    <meta name="description" content="Diego Ibañez fotógrafo profesional en Santiago del Estero | Fotograífa de Retrato | Bodas | 15 años | Bautismos | Egresos">
+    <meta name="keywords" content="Fotografía, Santiago del Estero, Fotógrafo de eventos">
+  
+    
+    
+</head>
+
+<body class="ancho-fijo">
+          
+    <header>
+                <div>
+                    <a href="./index.html"><img src="./img/logo-black-low-res.png" alt="Logo de la página"width="15%"></a>
+                </div>
+    </header>
+
+    <div class="busqueda">
+        
+        <input type="text" class="entrada" placeholder="Buscar...">
+        <button class="btn">
+            <i class="fas fa-search"></i>
+        </button>
+        
+    </div>
+
+    <nav id="menu">
+            <ul>
+                <li><a href="./index.html" class="nav-boton-menu"><span>Inicio</span></a></li>
+                <li><a href="./quince.html" class="nav-boton-menu"><span>15 años</span> </a></li>
+                <li><a href="./bodas.html" class="nav-boton-menu"><span>Bodas</span></a></li>
+                <li><a href="./retrato.html" class="nav-boton-menu"><span>Retrato</span></a></li>
+                <li><a href="./contacto.html" class="nav-boton-menu"><span>Contacto</span></a></li>
+            </ul>
+    </nav>
+
+    <section id="formulario">
+        <form id="ingreso">
+            <input id="nombre" type="text" placeholder ="Ingresa tu nombre">
+            <input  id="ingresar" type="submit" value="Enviar">
+        </form>
+    </section>
+
+   
+    <main>
+        
+        <section class="container content-section">
+            <h2>Selecciona las fotos que desees imprimir</h2>
+            <div class="galeria">
+                <!-- Comienzo de primer articulo -->
+              
+                <!-- Fin de primer articulo -->
+            </div>
+               
+        </section>
+
+        <section class="modulo-carrito">
+            <h2 class="encabezado-carro">Carrito</h2>
+            <div class="carro-fila">
+                <span class="carro-item carro-encabezado carro-columna">ITEM</span>
+                <span onclick="" class="carro-precio carro-encabezado carro-columna">PRECIO</span>
+                <span class="carro-cantidad carro-encabezado carro-columna">CANTIDAD COPIAS</span>
+            </div>
+            <div id=carrito>
+                <div class="contenedor-carro">
+                    <div> class="carro-items">  
+                </div>
+            </div>
+            
+                <div class="carro-total">
+                    <strong class="carro-total-titulo">Subtotal (o copias): $0</strong>
+                    <!-- <span class="carro-total-precio">(o copias): $89</span> -->
+                </div>
+                <button class="class="botnsprimario" type="button" onclick="clickCompra()">COMPRAR</button>
+            </div>
+        </section>
+
+    </main>
+
+        
+        <footer>
+            
+            <div id="footer-contenedor">
+
+                <div>
+                    <span>Ayuda</span>
+                        <ul>
+                            <li class="footer-listado"><i class="fa-solid fa-clipboard-question"></i><a href="./preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+                            <li class="footer-listado"><i class="fa-solid fa-camera"></i><a href="./reserva-turno.html">Reserva de turno</a></li>
+                            <li class="footer-listado"><i class="fa-solid fa-sack-dollar"></i><a href="./pagos.html">Medios de pago</a></li>
+                        </ul>
+                </div>
+                                       
+                <div>
+                    <span>Redes</span>
+                    <ul>
+                        <li class="footer-listado"><i class="fa-brands fa-facebook"></i><a href="https://www.facebook.com/diego.ibanez.980" target="_blank">Seguime por Facebook</a></li>
+                        <li class="footer-listado"><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/dieroiba_fotografo/" target="_blank">Seguime por Instagram</a></li>
+                        <li class="footer-listado"><i class="fa-brands fa-square-whatsapp"></i><a href="https://wa.me/5493855051742?text=Deseo%20más%20información%20sobre%20el%20servicio%20de%20fotografía%20." target="_blank">Chateá conmigo</a>
+                    </ul>
+                </div>
+
+            </div>
+
+        </footer>
+   
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="./js/tienda.js" async></script>
+</body>
+</html>
