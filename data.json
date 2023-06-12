@@ -1,0 +1,51 @@
+[
+{   
+    "id": 0,
+    "nombre": "Foto_0" ,
+    "precio": 389.99,
+    "imgSrc": "./img/arreglo/_EVP2627.jpg",
+    "stock": 5
+},
+
+{
+    "id": 1,
+    "nombre": "Foto_1" ,
+    "precio": 389.99,
+    "imgSrc": "./img/arreglo/_EVP3974.jpg",
+    "stock": 5
+},
+
+{
+    "id": 2,
+    "nombre": "Foto_2" ,
+    "precio": 389.99,
+    "imgSrc": "./img/arreglo/_EVP4874.jpg",
+    "stock": 5
+},
+
+{
+    "id": 2,
+    "nombre": "Foto_2" ,
+    "precio": 389.99,
+    "imgSrc": "./img/arreglo/_EVP7192.jpg",
+    "stock": 5
+},
+
+{
+    "id": 2,
+    "nombre": "Foto_2" ,
+    "precio": 389.99,
+    "imgSrc": "./img/arreglo/_EVP7660.jpg",
+    "stock": 5
+},
+
+{
+    "id": 2,
+    "nombre": "Foto_2" ,
+    "precio": 389.99,
+    "imgSrc": "./img/arreglo/_EVP8226.jpg",
+    "stock": 5
+}
+
+
+]

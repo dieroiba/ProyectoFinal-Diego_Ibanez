@@ -655,10 +655,14 @@ height: 1180px;
 /*Inicio de tienda*/
 
 
-.galery {
+.galeria {
   display: flex;
-  max-width: 900px;
+/*   max-width: 900px; */
   margin: auto;
+/*   justify-content: space-between; */
+  flex-wrap:wrap;
+/*   gap: 36px; */
+justify-content: center;
 }
 
 .btnsto {
@@ -727,7 +731,7 @@ height: 1180px;
 }
 
 .carro-item-imagen {
-  width: 35%;
+  width: 25%;
   height: auto;
   border-radius: 10px;
   margin: auto;
@@ -735,7 +739,7 @@ height: 1180px;
 
 .carro-item-titulo {
   color: #000;
-  font-size: 1.2em;
+  font-size: 1.0em;
   margin: auto;
 }
 
@@ -771,12 +775,12 @@ height: 1180px;
   font-size: 1.6em;
 }
 
-/* .botns {
+.botns {
   text-align: center;
   vertical-align: middle;
   padding: 0.67em 0.67em ;
   cursor: pointer;
-} */
+}
 
 .botns-quitar {
   color: #fff;
@@ -815,9 +819,21 @@ height: 1180px;
   font-size: 1em;
 }
 
-.item-imagen{
-  height: auto;
-  
+
+.item-imagen {
+  border-radius: 3%;
+  height: auto; 
+  width: 60%;
+  margin-top: 15px;
+  -webkit-filter: grayscale(0) blur(0);
+	filter: grayscale(0) blur(0);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.item-imagen:hover {
+	-webkit-filter: grayscale(100%) blur(1px);
+	filter: grayscale(100%) blur(1px);
 }
 
 
