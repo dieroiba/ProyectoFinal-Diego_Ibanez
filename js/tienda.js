@@ -2,7 +2,8 @@
 const articulosEl = document.querySelector(".galeria");
 const itemCarroEl = document.querySelector(".contenedor-carro");
 const subtotalEl = document.querySelector(".carro-total-titulo");
-
+let products = JSON.parse(localStorage.getItem ("products")); //Variable con los items a vender
+let cart = JSON.parse(localStorage.getItem ("cart")); // Variable con los items dentro del carrito
 
 fetch("data.json")
 .then(function(response) {
@@ -12,13 +13,13 @@ fetch("data.json")
     localStorage.setItem("products", JSON.stringify(data));
     if(!localStorage.getItem("cart")) {
         localStorage.setItem("cart", "[]");
+        location.reload(); //Recarga la página para que puedan verse los artículos en venta.
     }
 });
 
 //Variables globales para poder acceder desde dentro de las funciones
 
-let products = JSON.parse(localStorage.getItem ("products")); //Variable con los items a vender
-let cart = JSON.parse(localStorage.getItem ("cart")); // Variable con los items dentro del carrito
+
 
 
 //////////////////////////////////////////////////
@@ -54,7 +55,15 @@ renderArticulos();
 
 function agregarAlCarrito(id) {
     if(cart.some ((item) => item.id === id)) {
-        alert("El artículo ya existe");
+      
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Ya tienes cargado este item en el carrito!',
+            footer: 'Desde tu carrito, que está más abajo, puedes aumentar la cantidad de copias de cada foto!'
+            
+          })
+
     } else {
         const item = products.find((product) => product.id === id);
 
@@ -64,6 +73,32 @@ function agregarAlCarrito(id) {
         });    
         localStorage.setItem("cart", JSON.stringify(cart)); //Uso de JSON
         actualizarCarrito();
+
+        //Mensaje "Agregado al carrito"
+        let timerInterval
+        Swal.fire({
+        title: 'Agregaste una foto a tu carrito!',
+        icon: 'success',
+        //html: 'Me cerraré en <b></b> milisegundos.',
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+        //b.textContent = Swal.getTimerLeft()
+        }, 100)
+    },
+        willClose: () => {
+        clearInterval(timerInterval)
+        }
+})      .then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+        }
+})
+
     }
     
     
