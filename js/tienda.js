@@ -47,6 +47,25 @@ function renderArticulos() {
 
 renderArticulos();
 
+//Función agregar al carrito
+
+function agregarAlCarrito(id) {
+    if(cart.some ((item) => item.id === id)) {
+        alert("El artículo ya existe");
+    } else {
+        const item = products.find((product) => product.id === id);
+
+        cart.push({
+            ...item, //Spread de arrays
+            numeroDeUnidades : 1,
+        });    
+        localStorage.setItem("cart", JSON.stringify(cart)); //Uso de JSON
+        console.log(cart);
+    }
+
+};
+
+agregarAlCarrito(id);
 
 
 
