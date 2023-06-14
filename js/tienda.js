@@ -5,6 +5,7 @@ const subtotalEl = document.querySelector(".carro-total-titulo");
 let products = JSON.parse(localStorage.getItem ("products")); //Variable con los items a vender
 let cart = JSON.parse(localStorage.getItem ("cart")); // Variable con los items dentro del carrito
 
+
 fetch("data.json")
 .then(function(response) {
     return response.json();
@@ -43,7 +44,7 @@ function renderArticulos() {
             </div>
             `;
         
-        
+            renderSubtotal();
     });
 };
 
@@ -108,7 +109,8 @@ function agregarAlCarrito(id) {
 
 function actualizarCarrito() {
     renderItemsCarrito();
-    /* actualizarSubtotal(); */
+    renderSubtotal();
+    localStorage.setItem("cart", JSON.stringify(cart)); //Tambíen se actualiza el carrito en el Local Storage
 }
 
 
@@ -137,9 +139,141 @@ function renderItemsCarrito() {
             </div>
         </div>
         `;
-        /* actualizarCarrito(); */
+        
     });
 }
 
 renderItemsCarrito();
 
+//Aumentar o disminuir el número de unidades en el carrito
+
+function cambiarNumeroDeUnidades(action, id) {
+    cart = cart.map ((item) => {
+        let numeroDeUnidades = item.numeroDeUnidades;
+
+        if(item.id === id){
+            if (action === "disminuir" && numeroDeUnidades > 1) {
+                numeroDeUnidades--;
+            } else if (action === "aumentar" && numeroDeUnidades < item.stock) {
+                numeroDeUnidades++;
+            }
+        }
+       
+       return {
+        ...item, //Spread de arrays
+        numeroDeUnidades,
+       }
+    });
+    
+    actualizarCarrito();
+}
+
+
+function quitarItemDelCarrito(id) {
+    
+    Swal.fire({
+        
+        title: 'Quieres eliminar esta foto de tu carrito?',
+        showDenyButton: true,
+        icon: 'question',
+        showCancelButton: false,
+        confirmButtonText: 'Si',
+        denyButtonText: `No`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire('Foto eliminada con éxito!', '', 'success')
+          cart = cart.filter((item) => item.id !== id);
+          actualizarCarrito();
+        } else if (result.isDenied) {
+          Swal.fire('No se eliminó esta foto!', '', 'info')
+        }
+      })
+
+   
+}
+
+
+
+
+////////////////////////////////////////////
+//Actualización de los totales del carrito//
+////////////////////////////////////////////
+
+function renderSubtotal() {
+    
+    let precioTotal = 0;
+    let itemsTotales = 0;
+
+    cart.forEach((item) => {
+        precioTotal += item.precio * item.numeroDeUnidades;
+        itemsTotales += item.numeroDeUnidades;
+    });
+
+    
+    subtotalEl.innerHTML = `Subtotal (${itemsTotales} fotos): $${precioTotal.toFixed(2)}`;
+
+
+    
+}
+
+
+
+
+
+function clickCompra(){ //Se recorren todas las filas y se borran los items para que el carrito quede vacío.
+    
+    //Si el carrito está vacío y el usuario hace clic en Comprar aparece error.
+    if(itemCarroEl.innerHTML === ``) {
+
+        Swal.fire({
+            icon: 'warning',
+            title: 'Tu carrito esta vacío!',
+            text: 'Comenzá a agregar las fotos!',
+            //footer: '',
+            
+        })
+        
+    } else {
+        
+            while (itemCarroEl.hasChildNodes()){
+                    itemCarroEl.innerHTML = ``;
+                    subtotalEl.innerHTML = "Subtotal (o copias): $0";
+                
+                }
+            
+                localStorage.removeItem(`cart`); //Uso de Storage
+                
+                //Empleo de setTimeout para refrescar la página luego de vaciar el carrito.
+                setTimeout(() => {
+                    window.location.reload()
+                }, 3000)
+
+                //Mensaje luego de la compra.
+                let timerInterval
+                Swal.fire({
+                title: 'Muchas gracias por tu compra!',
+                icon: 'success',
+                //html: 'Me cerraré en <b></b> milisegundos.',
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                //b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                clearInterval(timerInterval)
+                }
+                }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                //console.log('I was closed by the timer')
+                }
+                
+                })
+
+            }
+}
