@@ -1,37 +1,3 @@
-/* //Array con artículos
-const articulos = [
-    {
-        id: 0,
-        nombre: "Foto_0" ,
-        precio: 389.99,
-        imgSrc: "./img/arreglo/_EVP4524-Editar.jpg",
-        stock: 5,
-    },
-
-
-    {
-        id: 1,
-        nombre: "Foto_1" ,
-        precio: 389.99,
-        imgSrc: "./img/arreglo/_EVP4535-Editar.jpg",
-        stock: 5,
-    },
-
-    {
-        id: 2,
-        nombre: "Foto_2" ,
-        precio: 389.99,
-        imgSrc: "./img/arreglo/_EVP4562-Editar.jpg",
-        stock: 5,
-    },
-
-]; */
-
-/* fetch("./data.json")
-.then((response) => response.json())
-.then((data) => console.log(data)); */
-
-
 //Selección de elementos en el DOM
 
 const articulosEl = document.querySelector(".galeria");
@@ -43,11 +9,11 @@ const subtotalEl = document.querySelector(".carro-total-titulo");
 //Renderizado de artículos en la galería (fotos)//
 //////////////////////////////////////////////////
 
-function renderArticulos(){
-    fetch("./data.json")
-    .then((response) => response.json())
-    .then((data) => 
-
+const getProducts = async () => {
+    const response = await fetch("data.json");
+    const data = await response.json();
+    function renderArticulos(){
+  
         data.forEach((articulo) => {
             let nombreArchivo = articulo.imgSrc; //Asigna el título de la foto según el nombre del archivo
             let tituloFoto = nombreArchivo.split("/").pop(); //Extrae de la ruta sólo el nombre del archivo para el título de la foto
@@ -63,8 +29,7 @@ function renderArticulos(){
                     </div>
             `;
         })
-    );
-        
+            
 };
 
 renderArticulos();
@@ -104,7 +69,7 @@ function agregarAlCarrito (id) {
 
     }else {
 
-        const item = articulos.find((articulo) => articulo.id === id)
+        const item = articulo.find((articulo) => articulo.id === id)
         carro.push({
             ...item, //Spread de arrays
             numeroDeUnidades : 1,
@@ -148,7 +113,7 @@ function agregarAlCarrito (id) {
     
 }
 
-
+agregarAlCarrito (id);
 
 //////////////////////////////////
 //Actualizar items en el carrito//
@@ -167,7 +132,7 @@ function actualizarCarrito() {
 //Renderizado de items de carrito//
 ///////////////////////////////////
 
-function renderItemsCarro() {
+function renderItemsCarro(articulo) {
         itemCarroEl.innerHTML = "";
     carro.forEach((item) => {
         let nombreImagen = item.imgSrc; //Asigna el título de la foto según el nombre del archivo
@@ -327,3 +292,11 @@ function clickCompra(){ //Se recorren todas las filas y se borran los items para
 
             }
 }
+
+
+
+};
+
+getProducts();
+
+

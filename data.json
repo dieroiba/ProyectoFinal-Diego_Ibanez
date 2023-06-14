@@ -24,7 +24,7 @@
 },
 
 {
-    "id": 2,
+    "id": 3,
     "nombre": "Foto_2" ,
     "precio": 389.99,
     "imgSrc": "./img/arreglo/_EVP7192.jpg",
@@ -32,7 +32,7 @@
 },
 
 {
-    "id": 2,
+    "id": 4,
     "nombre": "Foto_2" ,
     "precio": 389.99,
     "imgSrc": "./img/arreglo/_EVP7660.jpg",
@@ -40,7 +40,7 @@
 },
 
 {
-    "id": 2,
+    "id": 5,
     "nombre": "Foto_2" ,
     "precio": 389.99,
     "imgSrc": "./img/arreglo/_EVP8226.jpg",
