@@ -1,10 +1,16 @@
 
+//////////////////////////////////////////////////
+//Declaración de variables globales y constantes//
+//////////////////////////////////////////////////
+
 const articulosEl = document.querySelector(".galeria");
 const itemCarroEl = document.querySelector(".contenedor-carro");
 const subtotalEl = document.querySelector(".carro-total-titulo");
 let products = JSON.parse(localStorage.getItem ("products")); //Variable con los items a vender
 let cart = JSON.parse(localStorage.getItem ("cart")); // Variable con los items dentro del carrito
 
+
+//Conexión con el arreglo JSON
 
 fetch("data.json")
 .then(function(response) {
@@ -18,8 +24,6 @@ fetch("data.json")
     }
 });
 
-//Variables globales para poder acceder desde dentro de las funciones
-
 
 
 
@@ -30,8 +34,9 @@ fetch("data.json")
 function renderArticulos() {
         articulosEl.innerHTML = ``;
         products.forEach((product) => {
-        let nombreArchivo = product.imgSrc; //Asigna el título de la foto según el nombre del archivo
+        let nombreArchivo = product.imgSrc; //Asigna el título de la foto según el nombre y extesnión del archivo
         let tituloFoto = nombreArchivo.split("/").pop(); //Extrae de la ruta sólo el nombre del archivo para el título de la foto
+        //Plantilla a introducir en el DOM
         articulosEl.innerHTML += `
             <div>
                 <span class="item-titulo">${tituloFoto}</span>
@@ -51,10 +56,13 @@ function renderArticulos() {
 renderArticulos();
 
 
-
-//Función agregar al carrito
+//////////////////////////////
+//Función agregar al carrito//
+//////////////////////////////
 
 function agregarAlCarrito(id) {
+    //Verifica si existe el artículo en el carrito
+    
     if(cart.some ((item) => item.id === id)) {
       
         Swal.fire({
@@ -72,7 +80,7 @@ function agregarAlCarrito(id) {
             ...item, //Spread de arrays
             numeroDeUnidades : 1,
         });    
-        localStorage.setItem("cart", JSON.stringify(cart)); //Uso de JSON
+        localStorage.setItem("cart", JSON.stringify(cart)); //Se actualiza el arreglo dentro del localstorage
         actualizarCarrito();
 
         //Mensaje "Agregado al carrito"
@@ -105,7 +113,9 @@ function agregarAlCarrito(id) {
     
 };
 
-//Función actualizar carrito
+//////////////////////////////
+//Función actualizar carrito//
+//////////////////////////////
 
 function actualizarCarrito() {
     renderItemsCarrito();
@@ -114,13 +124,16 @@ function actualizarCarrito() {
 }
 
 
-//Render de los items del carrito
+//////////////////////////////////////////
+//Renderizado de los items en el carrito//
+//////////////////////////////////////////
 
 function renderItemsCarrito() {
-    itemCarroEl.innerHTML = "";
+    itemCarroEl.innerHTML = ""; //Para evitar la duplicación de items, primero se vacía el carrito
     cart.forEach ((product) => {
-        let nombreImagen = product.imgSrc; //Asigna el título de la foto según el nombre del archivo
-        let tituloImagen = nombreImagen.split("/").pop(); //Extrae de la ruta sólo el nombre del archivo para el título de la foto
+        let nombreImagen = product.imgSrc; //Variable para asignar el título de la foto según el nombre del archivo
+        let tituloImagen = nombreImagen.split("/").pop(); //Variable que  va a contener de la ruta sólo el nombre y extesnión del archivo para el título de la foto
+        //Plantilla que muestra los artículos en el DOM
         itemCarroEl.innerHTML += `
         <div  class="carro-items"> 
             <div class = "fila-de-carro">
@@ -145,7 +158,10 @@ function renderItemsCarrito() {
 
 renderItemsCarrito();
 
-//Aumentar o disminuir el número de unidades en el carrito
+
+////////////////////////////////////////////////////////////
+//Aumentar o disminuir el número de unidades en el carrito//
+////////////////////////////////////////////////////////////
 
 function cambiarNumeroDeUnidades(action, id) {
     cart = cart.map ((item) => {
@@ -168,6 +184,10 @@ function cambiarNumeroDeUnidades(action, id) {
     actualizarCarrito();
 }
 
+
+///////////////////////////////////
+//Función quitar item del carrito//
+///////////////////////////////////
 
 function quitarItemDelCarrito(id) {
     
@@ -212,14 +232,14 @@ function renderSubtotal() {
 
     
     subtotalEl.innerHTML = `Subtotal (${itemsTotales} fotos): $${precioTotal.toFixed(2)}`;
-
-
     
 }
 
 
 
-
+////////////////
+//Botón Cmprar//
+////////////////
 
 function clickCompra(){ //Se recorren todas las filas y se borran los items para que el carrito quede vacío.
     
