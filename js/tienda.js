@@ -26,7 +26,8 @@ let cart = JSON.parse(localStorage.getItem ("cart")); // Variable con los items 
 //////////////////////////////////////////////////
 
 function renderArticulos() {
-    products.forEach((product) => {
+        articulosEl.innerHTML = ``;
+        products.forEach((product) => {
         let nombreArchivo = product.imgSrc; //Asigna el título de la foto según el nombre del archivo
         let tituloFoto = nombreArchivo.split("/").pop(); //Extrae de la ruta sólo el nombre del archivo para el título de la foto
         articulosEl.innerHTML += `
@@ -47,6 +48,8 @@ function renderArticulos() {
 
 renderArticulos();
 
+
+
 //Función agregar al carrito
 
 function agregarAlCarrito(id) {
@@ -60,73 +63,48 @@ function agregarAlCarrito(id) {
             numeroDeUnidades : 1,
         });    
         localStorage.setItem("cart", JSON.stringify(cart)); //Uso de JSON
-        console.log(cart);
+        actualizarCarrito();
     }
-
+    
+    
 };
 
-agregarAlCarrito(id);
+//Función actualizar carrito
+
+function actualizarCarrito() {
+    renderItemsCarrito();
+    /* actualizarSubtotal(); */
+}
 
 
+//Render de los items del carrito
 
+function renderItemsCarrito() {
+    itemCarroEl.innerHTML = "";
+    cart.forEach ((product) => {
+        let nombreImagen = product.imgSrc; //Asigna el título de la foto según el nombre del archivo
+        let tituloImagen = nombreImagen.split("/").pop(); //Extrae de la ruta sólo el nombre del archivo para el título de la foto
+        itemCarroEl.innerHTML += `
+        <div  class="carro-items"> 
+            <div class = "fila-de-carro">
+                <div class="carro-item carro-columna">
+                    <img class="carro-item-imagen" src="${product.imgSrc}">
+                    <span class="carro-item-titulo">${tituloImagen}</span>
+                </div>
+                    <span class="carro-precio carro-columna">$ ${product.precio}</span>
+                <div class="carro-cantidad carro-columna">
+                    <div class = "btn btnsto" onclick = "cambiarNumeroDeUnidades('disminuir', ${product.id})">-</div>
+                    <div class = "numero-copias">${product.numeroDeUnidades}</div>
+                    <div class = "btn btnsto" onclick = "cambiarNumeroDeUnidades('aumentar', ${product.id})">+</div>
 
-
-//Agregar el producto al carrito
-
-/* function addItemToCart(productId) {
-    let product = products.find(function(product) {
-        return product.id == productId;
+                    <button class="botns botns-quitar" type="button" onclick="quitarItemDelCarrito(${product.id})">QUITAR</button>
+                </div>
+            </div>
+        </div>
+        `;
+        /* actualizarCarrito(); */
     });
-
-    if(cart.length == 0) {
-        cart.push(product);
-    }else {
-        let res = cart.find(element => element.id == productId);
-        if(res === undefined) {
-            cart.push(product);
-        }
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-addItemToCart();
+renderItemsCarrito();
 
-
-//Quitar artículo del carrito
-
-function removeItemFromCart(productId) {
-    let temp = cart.filter(item => item.id != productId);
-    localStorage.setItem("cart", JSON.stringify(temp));
-}
-
-removeItemFromCart(4);
-
-// Actualizar las cantidades del carrito
-
-function updateQuantity(productId, stock) {
-    for(let product of cart) {
-        if(product.id == productId) {
-            product.stock = stock;
-            product.precio = product.precio * stock;
-        }
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-updateQuantity(0, 0);
-
-//Total del carrito
-
-function getTotal() {
-    let temp = cart.map(function(item) {
-        return parseFloat(item.precio);
-    });
-
-    let sum = temp.reduce(function(prev, next) {
-        return prev + next;
-    }, 0);
-
-    console.log(sum);
-}
-getTotal(); */
